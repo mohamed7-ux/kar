@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karate Club | Join Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+    --red: #e51d35;
+    --red2: #ff4055;
+    --bg: #090a0d;
+    --card: #15161b;
+    --muted: #92939d;
+    --border: rgba(255,255,255,.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: rgba(229,29,53,.12);
+    filter: blur(130px);
+    top: -200px;
+    left: -150px;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: rgba(229,29,53,.07);
+    filter: blur(120px);
+    bottom: -150px;
+    right: -100px;
+    pointer-events: none;
+}
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #111216;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 30px 100px rgba(0,0,0,.6);
+}
+
+/* LEFT SIDE */
+
+.visual {
+    position: relative;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.85)),
+      url("https://images.unsplash.com/photo-1555597673-b21d5c935865?q=85&w=1200") center/cover;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 35px;
+    overflow: hidden;
+}
+
+.visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,transparent 45%,rgba(229,29,53,.25));
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    background: var(--red);
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    box-shadow: 0 0 30px rgba(229,29,53,.4);
+}
+
+.brand-name {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.brand-name span {
+    color: var(--red2);
+}
+
+.visual-content {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+.visual-content .tag {
+    color: #ff6576;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.visual-content h2 {
+    font-size: 39px;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+.visual-content h2 span {
+    color: var(--red2);
+}
+
+.visual-content p {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 15px;
+    line-height: 2;
+}
+
+.visual-footer {
+    position: relative;
+    z-index: 2;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* RIGHT SIDE */
+
+.content {
+    padding: 55px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mobile-brand {
+    display: none;
+}
+
+.step {
+    display: none;
+    animation: appear .4s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.progress {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 35px;
+}
+
+.progress span {
+    height: 4px;
+    flex: 1;
+    background: #303139;
+    border-radius: 10px;
+}
+
+.progress span.done {
+    background: var(--red);
+    box-shadow: 0 0 10px rgba(229,29,53,.5);
+}
+
+.small-title {
+    color: var(--red2);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.heading {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.description {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 30px;
+    line-height: 1.9;
+}
+
+/* INPUTS */
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.input-box {
+    height: 55px;
+    border: 1px solid var(--border);
+    background: #1a1b21;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    transition: .3s;
+}
+
+.input-box:focus-within {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(229,29,53,.1);
+}
+
+.input-box i {
+    color: #777984;
+    margin-left: 12px;
+}
+
+.input-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    direction: rtl;
+}
+
+.input-box input::placeholder {
+    color: #686a74;
+}
+
+.input-box button {
+    background: none;
+    color: #888;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* BUTTONS */
+
+.primary-btn {
+    width: 100%;
+    height: 55px;
+    background: linear-gradient(110deg,#b91027,#f02b43);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 8px;
+    box-shadow: 0 10px 25px rgba(229,29,53,.18);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(229,29,53,.35);
+}
+
+.back-btn {
+    background: transparent;
+    color: #aaa;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    margin-bottom: 25px;
+    font-size: 13px;
+    text-align: right;
+}
+
+.back-btn:hover {
+    color: white;
+}
+
+.bottom-text {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 24px;
+}
+
+.bottom-text a {
+    color: var(--red2);
+    cursor: pointer;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+/* ROLE CARDS */
+
+.roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.role-card {
+    border: 1px solid var(--border);
+    background: #1a1b21;
+    border-radius: 17px;
+    padding: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+    position: relative;
+}
+
+.role-card:hover,
+.role-card.selected {
+    border-color: var(--red);
+    background: rgba(229,29,53,.09);
+    transform: translateY(-4px);
+}
+
+.role-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    background: #292a32;
+    display: grid;
+    place-items: center;
+    font-size: 26px;
+    margin: 0 auto 12px;
+    color: var(--red2);
+}
+
+.role-card h3 {
+    font-size: 16px;
+}
+
+.role-card p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.check {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 23px;
+    height: 23px;
+    background: var(--red);
+    border-radius: 50%;
+    font-size: 12px;
+    place-items: center;
+}
+
+.role-card.selected .check {
+    display: grid;
+}
+
+/* INFO */
+
+.info {
+    background: rgba(229,29,53,.08);
+    border: 1px solid rgba(229,29,53,.2);
+    border-radius: 11px;
+    padding: 13px;
+    font-size: 11px;
+    color: #ddd;
+    margin-bottom: 20px;
+    line-height: 1.9;
+}
+
+.info i {
+    color: var(--red2);
+    margin-left: 7px;
+}
+
+.optional {
+    color: #777;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.success-icon {
+    width: 90px;
+    height: 90px;
+    background: rgba(37,190,115,.12);
+    color: #32d18a;
+    border: 1px solid rgba(37,190,115,.4);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    margin: 0 auto 25px;
+}
+
+.success {
+    text-align: center;
+}
+
+@media(max-width:800px) {
+    .wrapper {
+        max-width: 480px;
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .visual {
+        display: none;
+    }
+
+    .content {
+        padding: 35px 25px;
+    }
+
+    .mobile-brand {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 35px;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+<div class="wrapper">
+
+    <!-- VISUAL SIDE -->
+
+    <div class="visual">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-hand-fist"></i>
+            </div>
+
+            <div class="brand-name">
+                Karate <span>Club</span>
+            </div>
+        </div>
+
+        <div class="visual-content">
+            <div class="tag">DISCIPLINE • STRENGTH • SUCCESS</div>
+
+            <h2>
+                القوة تبدأ<br>
+                من <span>الانضباط.</span>
+            </h2>
+
+            <p>
+                ابدأ رحلتك الرياضية معنا.<br>
+                طور مهاراتك واصنع مستقبلك.
+            </p>
+        </div>
+
+        <div class="visual-footer">
+            © 2026 Karate Club. All Rights Reserved.
+        </div>
+
+    </div>
+
+    <!-- FORM SIDE -->
+
+    <div class="content">
+
+        <div class="mobile-brand brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-hand-fist"></i>
+            </div>
+            <div class="brand-name">
+                Karate <span>Club</span>
+            </div>
+        </div>
+
+        <div class="progress" id="progress">
+            <span class="done"></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- STEP 1 EMAIL -->
+
+        <div class="step active" id="step1">
+
+            <div class="small-title">STEP 01 / ACCOUNT</div>
+
+            <h1 class="heading">إنشاء حساب جديد</h1>
+
+            <p class="description">
+                أدخل بريدك الإلكتروني وكلمة المرور<br>
+                للبدء في إنشاء حسابك.
+            </p>
+
+            <form id="emailForm">
+
+                <div class="field">
+                    <label>البريد الإلكتروني</label>
+                    <div class="input-box">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email"
+                               placeholder="example@email.com" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>كلمة المرور</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password"
+                               placeholder="8 أحرف على الأقل"
+                               minlength="8" required>
+                        <button type="button" onclick="togglePassword('password',this)">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>تأكيد كلمة المرور</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <input type="password" id="confirmPassword"
+                               placeholder="أعد كتابة كلمة المرور" required>
+                    </div>
+                </div>
+
+                <button class="primary-btn" type="submit">
+                    متابعة <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+            </form>
+
+            <div class="bottom-text">
+                لديك حساب بالفعل؟
+                <a onclick="alert('صفحة تسجيل الدخول ستضاف لاحقاً')">
+                    تسجيل الدخول
+                </a>
+            </div>
+
+        </div>
+
+        <!-- STEP 2 ROLE -->
+
+        <div class="step" id="step2">
+
+            <button class="back-btn" onclick="goTo(1)">
+                <i class="fa-solid fa-arrow-right"></i> رجوع
+            </button>
+
+            <div class="small-title">STEP 02 / ACCOUNT TYPE</div>
+
+            <h1 class="heading">اختر نوع حسابك</h1>
+
+            <p class="description">
+                حدد نوع الحساب الذي تريد إنشاءه.
+            </p>
+
+            <div class="roles">
+
+                <div class="role-card" id="studentCard"
+                     onclick="selectRole('student')">
+
+                    <div class="check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <div class="role-icon">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+
+                    <h3>طالب</h3>
+                    <p>Student Account</p>
+
+                </div>
+
+                <div class="role-card" id="coachCard"
+                     onclick="selectRole('coach')">
+
+                    <div class="check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <div class="role-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+
+                    <h3>كابتن</h3>
+                    <p>Coach Account</p>
+
+                </div>
+
+            </div>
+
+            <button class="primary-btn" onclick="continueRole()">
+                متابعة <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+        </div>
+
+        <!-- STEP 3 PROFILE -->
+
+        <div class="step" id="step3">
+
+            <button class="back-btn" onclick="goTo(2)">
+                <i class="fa-solid fa-arrow-right"></i> رجوع
+            </button>
+
+            <div class="small-title">STEP 03 / PROFILE</div>
+
+            <h1 class="heading" id="profileTitle">بيانات الحساب</h1>
+
+            <p class="description">
+                أكمل بياناتك الشخصية للانضمام إلى النادي.
+            </p>
+
+            <form id="profileForm">
+
+                <div class="field">
+                    <label>الاسم بالكامل</label>
+                    <div class="input-box">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="fullName"
+                               placeholder="أدخل اسمك بالكامل" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>رقم الهاتف</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="phone"
+                               placeholder="01xxxxxxxxx"
+                               pattern="01[0-9]{9}"
+                               title="أدخل رقم هاتف مصري صحيح مكون من 11 رقمًا"
+                               required>
+                    </div>
+                </div>
+
+                <div class="field" id="parentField">
+                    <label>
+                        رقم هاتف ولي الأمر
+                        <span class="optional">(اختياري)</span>
+                    </label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-users"></i>
+                        <input type="tel" id="parentPhone"
+                               placeholder="01xxxxxxxxx"
+                               pattern="01[0-9]{9}"
+                               title="أدخل رقم هاتف مصري صحيح مكون من 11 رقمًا">
+                    </div>
+                </div>
+
+                <div class="info" id="coachInfo" style="display:none">
+                    <i class="fa-solid fa-circle-info"></i>
+                    حساب الكابتن يحتاج موافقة الإدارة قبل تفعيل صلاحياته.
+                </div>
+
+                <button class="primary-btn" type="submit">
+                    إنشاء الحساب <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- SUCCESS -->
+
+        <div class="step" id="step4">
+
+            <div class="success">
+
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div class="small-title">REGISTRATION COMPLETED</div>
+
+                <h1 class="heading" id="successTitle">
+                    تم التسجيل بنجاح!
+                </h1>
+
+                <p class="description" id="successDescription">
+                    مرحباً بك في عائلة Karate Club.
+                </p>
+
+                <button class="primary-btn"
+                        onclick="alert('يجب ربط النظام بقاعدة البيانات لتسجيل الدخول')">
+                    الانتقال لتسجيل الدخول
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<script>
+
+let selectedRole = null;
+
+function goTo(number) {
+
+    document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+    });
+
+    document.getElementById('step' + number).classList.add('active');
+
+    let bars = document.querySelectorAll('#progress span');
+
+    bars.forEach((bar, index) => {
+        bar.classList.toggle('done', index < Math.min(number,3));
+    });
+}
+
+function togglePassword(id, button) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+    button.innerHTML = input.type === 'password'
+        ? '<i class="fa-regular fa-eye"></i>'
+        : '<i class="fa-regular fa-eye-slash"></i>';
+}
+
+// STEP 1
+
+document.getElementById('emailForm').addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirmPassword').value;
+
+    if(password !== confirm) {
+        alert('كلمتا المرور غير متطابقتين');
+        return;
+    }
+
+    goTo(2);
+});
+
+// STEP 2
+
+function selectRole(role) {
+
+    selectedRole = role;
+
+    document.getElementById('studentCard').classList.toggle(
+        'selected', role === 'student'
+    );
+
+    document.getElementById('coachCard').classList.toggle(
+        'selected', role === 'coach'
+    );
+}
+
+function continueRole() {
+
+    if(!selectedRole) {
+        alert('من فضلك اختر نوع الحساب أولاً');
+        return;
+    }
+
+    const isStudent = selectedRole === 'student';
+
+    document.getElementById('profileTitle').textContent =
+        isStudent ? 'تسجيل طالب جديد' : 'تسجيل كابتن جديد';
+
+    document.getElementById('parentField').style.display =
+        isStudent ? 'block' : 'none';
+
+    document.getElementById('coachInfo').style.display =
+        isStudent ? 'none' : 'block';
+
+    goTo(3);
+}
+
+// STEP 3
+
+document.getElementById('profileForm').addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const roleName = selectedRole === 'student' ? 'طالب' : 'كابتن';
+
+    document.getElementById('successTitle').textContent =
+        selectedRole === 'coach' ? 'تم إرسال طلبك!' : 'تم التسجيل بنجاح!';
+
+    document.getElementById('successDescription').textContent =
+        selectedRole === 'coach'
+        ? 'تم إرسال طلب إنشاء حساب الكابتن، وسيتم مراجعته من الإدارة.'
+        : 'مرحباً بك في عائلة Karate Club.';
+
+    goTo(4);
+});
+
+</script>
+
+</body>
+</html>
